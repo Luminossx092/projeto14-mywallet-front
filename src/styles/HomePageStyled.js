@@ -12,6 +12,7 @@ export const HomePageContainer = styled.div`
     flex-direction:column;
     justify-content:center;
     align-items:center;
+    box-sizing:border-box;
     h1{
         margin: 0 73px;
         font-size: 16px;

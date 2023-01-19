@@ -30,6 +30,9 @@ body {
 	line-height: 1;
 	background-color: ${Colors.backgroundColor};
 }
+div{
+	box-sizing:border-box;
+}
 ol, ul {
 	list-style: none;
 }
@@ -45,7 +48,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-p{
+p,h1{
 	font-family: 'Raleway', sans-serif;
 }
 `
