@@ -3,18 +3,34 @@ import { IoExitOutline } from "react-icons/io5"
 import { Link } from "react-router-dom";
 import { HomePageContainer } from "../styles/HomePageStyled";
 import styled from "styled-components";
-import { Colors, SaldoData } from "../constants/constants";
+import { BaseURL, Colors, SaldoData } from "../constants/constants";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai'
-import { useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import Registry from "../components/Registry";
+import axios from "axios";
 
-export default function HomePage() {
-    const [userData, serUserData] = useState(SaldoData);
+export default function HomePage({loginData}) {
+    const [userData, setUserData] = useState(SaldoData);
+    //const ProfileDataContext = createContext();
+    const {token,name} = loginData;
+    useEffect(() => {
+        const config = {
+            headers: {
+                "Authorization":`Bearer ${token}`
+            }
+        }
+        axios.get(`${BaseURL}/balance`,config)
+        .then(r=>{
+            setUserData(r.data)
+        })
+        .catch(e=>{console.log(e.response.data)})
+    }, [])
+
 
     return (
         <>
             <Navbar>
-                <p>Oi, Fulano</p>
+                <p>{`Oi, ${name}`}</p>
                 <Link to={'/'} style={{ textDecoration: 'none' }}>
                     <IoExitOutline style={{ fontSize: '32px', color: "white" }} />
                 </Link>
@@ -28,13 +44,13 @@ export default function HomePage() {
                 : <>
                     <DadosContainer>
                         <div>
-                            {userData.map((data,i) =>
-                                <Registry id={i} data={data} />
+                            {userData.map((data) =>
+                                <Registry key={data.id} data={data} />
                             )}
                         </div>
                         <SaldoTotalContainer>
                             <h1>SALDO</h1>
-                            <SaldoTotalStyled saldo={userData.reduce((a, data) => a + data.valor, 0).toFixed(2)}>{userData.reduce((a, data) => a + data.valor, 0).toFixed(2)}</SaldoTotalStyled>
+                            <SaldoTotalStyled saldo={userData.reduce((a, data) => a + Number(data.valor), 0).toFixed(2)}>{userData.reduce((a, data) => a + Number(data.valor), 0).toFixed(2)}</SaldoTotalStyled>
                         </SaldoTotalContainer>
                     </DadosContainer>
                 </>
@@ -113,5 +129,5 @@ const SaldoTotalContainer = styled.div`
 `
 
 const SaldoTotalStyled = styled.p`
-    color: ${props=>props.saldo >=0?Colors.positiveColor:Colors.negativeColor}
+    color: ${props => props.saldo >= 0 ? Colors.positiveColor : Colors.negativeColor}
 `

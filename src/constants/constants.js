@@ -7,9 +7,9 @@ export const Colors = {
     negativeColor: '#C70000'
 }
 
-export const BaseURL = '';
+export const BaseURL = process.env.REACT_APP_API_URL;
 
-export const SaldoData = [
+export const SaldoData = [/*
     {
         description: 'batata frita e molho',
         date: '15/04',
@@ -29,5 +29,5 @@ export const SaldoData = [
         description: 'trabaio',
         date: '10/01',
         valor: 8000
-    }
+    }*/
 ]

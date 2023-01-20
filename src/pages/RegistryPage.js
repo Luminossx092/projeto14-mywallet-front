@@ -25,13 +25,13 @@ export default function RegistryPage() {
     function TryRegistry(e) {
         e.preventDefault();
         setIsLoading(true)
-        axios.post(`${BaseURL}auth/sign-up`, form)
+        axios.post(`${BaseURL}/cadastro`, form)
             .then(() => {
                 setIsLoading(false);
                 navigate("/")
             })
             .catch((e) => {
-                alert(e.response.data.message);
+                alert(e);
                 setIsLoading(false);
             })
     }
@@ -70,6 +70,7 @@ export default function RegistryPage() {
                         onChange={handleForm}
                         value={form.confirmPassword}
                         disabled={isLoading}
+                        pattern={form.password}
                         required
                         placeholder="Confirme a senha" />
                     <button type="submit" disabled={isLoading}>{isLoading ? <LoadingDots /> : "Cadastrar"}</button>

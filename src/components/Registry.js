@@ -9,7 +9,7 @@ export default function Registry(props) {
             <DescriptionContainer>
                 <h1>{description}</h1>
             </DescriptionContainer>
-            <ValorStylized valor={valor}>{valor.toFixed(2)}</ValorStylized>
+            <ValorStylized valor={Number(valor)}>{Number(valor).toFixed(2)}</ValorStylized>
         </RegistryContainer>
     )
 }

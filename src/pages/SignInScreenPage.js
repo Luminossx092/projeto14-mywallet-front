@@ -15,17 +15,16 @@ export default function HomeScreen({ setLoginData }) {
     function TryLoggingIn(e) {
         e.preventDefault();
         setIsLoading(true);
-        navigate("/home");
-        /*axios.post(`${BaseURL}auth/login`, { email, password })
+        axios.post(`${BaseURL}/login`, { email, password })
             .then((r) => {
                 setLoginData(r.data);
                 setIsLoading(false);
                 navigate("/home")
             })
             .catch((e) => {
-                alert(e.response.data.message);
+                alert(e);
                 setIsLoading(false);
-            })*/
+            })
     }
     return (
         <HomeScreenContainer>

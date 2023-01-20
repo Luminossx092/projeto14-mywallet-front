@@ -16,11 +16,11 @@ function App() {
       <BrowserRouter>
         <ProfileDataContext.Provider value={loginData}>
           <Routes>
-            <Route path="/" element={<SignInPage setLoginData={setLoginData} />} />
+            <Route path="/" element={<SignInPage setLoginData={setLoginData}/>} />
             <Route path="/cadastro" element={<RegistryPage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/nova-entrada" element={<NewEntryPage />} />
-            <Route path="/nova-saida" element={<NewOutPage />} />
+            <Route path="/home" element={<HomePage loginData={loginData}/>} />
+            <Route path="/nova-entrada" element={<NewEntryPage loginData={loginData}/>} />
+            <Route path="/nova-saida" element={<NewOutPage loginData={loginData}/>} />
           </Routes>
         </ProfileDataContext.Provider>
       </BrowserRouter>
