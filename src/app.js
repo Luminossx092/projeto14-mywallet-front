@@ -18,7 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<SignInPage setLoginData={setLoginData}/>} />
             <Route path="/cadastro" element={<RegistryPage />} />
-            <Route path="/home" element={<HomePage loginData={loginData}/>} />
+            <Route path="/home" element={<HomePage loginData={loginData} setLoginData={setLoginData}/>} />
             <Route path="/nova-entrada" element={<NewEntryPage loginData={loginData}/>} />
             <Route path="/nova-saida" element={<NewOutPage loginData={loginData}/>} />
           </Routes>

@@ -1,15 +1,14 @@
 import axios from "axios"
 import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
 import { BaseURL } from "../constants/constants"
 import LoadingDots from "../components/LoadingDots"
 import { InputStyle } from "../styles/inputStyle"
 import { HomeScreenContainer, InputsContainer } from "../styles/SignInPageStyled"
 import Navbar from "../components/Navbar"
 import CurrencyInput from 'react-currency-input-field';
-import styled from "styled-components"
 import CurrentInputContainer from "../styles/CurrentInputStyle"
 import dayjs from "dayjs"
+import { useNavigate } from "react-router-dom"
 
 export default function NewOutPage({ loginData }) {
     const [valor, setValor] = useState('');

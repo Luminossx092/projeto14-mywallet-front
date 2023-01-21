@@ -8,26 +8,3 @@ export const Colors = {
 }
 
 export const BaseURL = process.env.REACT_APP_API_URL;
-
-export const SaldoData = [/*
-    {
-        description: 'batata frita e molho',
-        date: '15/04',
-        valor: 2000.8
-    },
-    {
-        description: 'fiança',
-        date: '16/05',
-        valor: -1500.457
-    },
-    {
-        description: 'comida',
-        date: '28/10',
-        valor: -5000
-    },
-    {
-        description: 'trabaio',
-        date: '10/01',
-        valor: 8000
-    }*/
-]

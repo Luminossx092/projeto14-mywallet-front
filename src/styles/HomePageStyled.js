@@ -42,3 +42,61 @@ export const InputsContainer = styled.div`
         color:red;
     }
 `
+export const ButtonHomePageContainer = styled.div`
+    width: 326px;
+    margin:0 auto;
+    gap:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+`
+
+export const NewEntryButtonContainer = styled.div`
+    height: 114px;
+    width: 156px;
+    border-radius: 5px;
+    margin-bottom:16px;
+    padding:10px;
+    background-color: ${Colors.buttonColor};
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    p{
+        width:64px;
+        color:white;
+        font-weight:700;
+        font-size:17px;
+    }
+`
+export const DadosContainer = styled.div`
+    height: 416px;
+    width: 326px;
+    margin: 13px auto;
+    margin-top:78px;
+    padding:12px 0;
+    border-radius: 5px;
+    background-color: white;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+    box-sizing:border-box;
+    p{ 
+        font-size: 17px;
+        font-weight: 400;
+    }
+`
+
+export const SaldoTotalContainer = styled.div`
+    width:300px;
+    display:flex;
+    justify-content:space-between;
+    h1{
+        font-weight:700;
+        font-size: 17px;
+    }
+`
+
+export const SaldoTotalStyled = styled.p`
+    color: ${props => props.saldo >= 0 ? Colors.positiveColor : Colors.negativeColor}
+`

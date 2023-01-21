@@ -1,17 +1,15 @@
 import Navbar from "../components/Navbar";
 import { IoExitOutline } from "react-icons/io5"
 import { Link } from "react-router-dom";
-import { HomePageContainer } from "../styles/HomePageStyled";
-import styled from "styled-components";
-import { BaseURL, Colors, SaldoData } from "../constants/constants";
+import { ButtonHomePageContainer, DadosContainer, HomePageContainer, NewEntryButtonContainer, SaldoTotalContainer, SaldoTotalStyled } from "../styles/HomePageStyled";
+import { BaseURL,SaldoData } from "../constants/constants";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from 'react-icons/ai'
-import { createContext, useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Registry from "../components/Registry";
 import axios from "axios";
 
-export default function HomePage({loginData}) {
-    const [userData, setUserData] = useState(SaldoData);
-    //const ProfileDataContext = createContext();
+export default function HomePage({loginData,setLoginData}) {
+    const [userData, setUserData] = useState([]);
     const {token,name} = loginData;
     useEffect(() => {
         const config = {
@@ -31,7 +29,7 @@ export default function HomePage({loginData}) {
         <>
             <Navbar>
                 <p>{`Oi, ${name}`}</p>
-                <Link to={'/'} style={{ textDecoration: 'none' }}>
+                <Link onClick={()=>setLoginData({})} to={'/'} style={{ textDecoration: 'none' }}>
                     <IoExitOutline style={{ fontSize: '32px', color: "white" }} />
                 </Link>
             </Navbar>
@@ -72,62 +70,3 @@ export default function HomePage({loginData}) {
         </>
     )
 }
-
-const ButtonHomePageContainer = styled.div`
-    width: 326px;
-    margin:0 auto;
-    gap:15px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-`
-
-const NewEntryButtonContainer = styled.div`
-    height: 114px;
-    width: 156px;
-    border-radius: 5px;
-    margin-bottom:16px;
-    padding:10px;
-    background-color: ${Colors.buttonColor};
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    p{
-        width:64px;
-        color:white;
-        font-weight:700;
-        font-size:17px;
-    }
-`
-const DadosContainer = styled.div`
-    height: 416px;
-    width: 326px;
-    margin: 13px auto;
-    margin-top:78px;
-    padding:12px 0;
-    border-radius: 5px;
-    background-color: white;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    align-items:center;
-    box-sizing:border-box;
-    p{ 
-        font-size: 17px;
-        font-weight: 400;
-    }
-`
-
-const SaldoTotalContainer = styled.div`
-    width:300px;
-    display:flex;
-    justify-content:space-between;
-    h1{
-        font-weight:700;
-        font-size: 17px;
-    }
-`
-
-const SaldoTotalStyled = styled.p`
-    color: ${props => props.saldo >= 0 ? Colors.positiveColor : Colors.negativeColor}
-`
